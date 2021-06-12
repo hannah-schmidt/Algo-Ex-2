@@ -6,7 +6,7 @@ import lists.Listable;
 import lists.SinglyLinkedList;
 
 public class Bubblesort {
-    void bubbleSort_c(Listable list) {
+    Listable bubbleSort_c(Listable list) {
         int n = list.size();
         Student student1;
         Student student2;
@@ -16,16 +16,14 @@ public class Bubblesort {
                 student1 = (Student) list.get(j);
                 student2 = (Student) list.get(j + 1);
                 if (student1.getCourse() > student2.getCourse()) {
-                    // swap temp and arr[i]
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    list.switchnodes(j-1);
                 }
             }
         }
+        return list;
     }
 
-    void bubbleSort_c(Listable list) {
+    Listable bubbleSort_m(Listable list) {
         int n = list.size();
         Student student1;
         Student student2;
@@ -34,22 +32,12 @@ public class Bubblesort {
                 int a = j + 1;
                 student1 = (Student) list.get(j);
                 student2 = (Student) list.get(j + 1);
-                if (student1.getCourse() > student2.getCourse()) {
-                    // swap temp and arr[i]
-
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                if (student1.getMatriculationNumber() > student2.getMatriculationNumber()) {
+                    list.switchnodes(j-1);
                 }
             }
         }
+        return list;
     }
 
-    /* Prints the array */
-    void printArray(int arr[]) {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i] + " ");
-        System.out.println();
-    }
 }

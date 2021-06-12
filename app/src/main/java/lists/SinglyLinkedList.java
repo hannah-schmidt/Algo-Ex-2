@@ -129,9 +129,18 @@ public class SinglyLinkedList<T> implements Listable {
 
     }
 
-
-
-
+    @Override
+    public void switchnodes(int index) {
+        Node temp=head;
+        for(int i=0;i<index-1;i++){
+            temp=temp.next;
+        }
+        Node next=temp.next;
+        Node four=temp.next.next.next;
+        temp.next=temp.next.next;
+        temp.next.next=next;
+        temp.next.next.next=four;
+    }
 
 
 }

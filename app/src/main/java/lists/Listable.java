@@ -23,4 +23,6 @@ public interface Listable<T> {
 
     void printAll();
 
+    void switchnodes(int index);
+
 }
