@@ -35,11 +35,11 @@ public class Student {
         this.surname = surname;
     }
 
-    public Course getCourse() {
+    public int getCourse() {
         return course;
     }
 
-    public void setStudiengang(Course course1) {
+    public void setStudiengang(int course1) {
         this.course = course1;
     }
 

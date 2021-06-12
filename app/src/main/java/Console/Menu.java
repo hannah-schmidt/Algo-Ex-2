@@ -78,4 +78,10 @@ public class Menu {
         return a;
     }
 
+    public void sort(){
+        System.out.println("ich hab hunger und möchte etwas essen");
+        System.out.println("aber ich bin zu faul um mir was zu kochen leider");
+        System.out.println("deswegen werde ich jetzt wohl weiter gummibärchen fressen");
+    }
+
 }
