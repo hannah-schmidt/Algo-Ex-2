@@ -11,6 +11,19 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public void add(Object data) {
+        Node node=new Node();
+        node.data=(T) data;
+
+        if(head==null){
+            head=node;
+            count++;
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=node;
         count++;
     }
 
@@ -28,11 +41,15 @@ public class SinglyLinkedList<T> implements Listable {
         Node node=new Node();
         node.data=(T) data;
         node.next=null;
-        Node temp=head;
-        while(temp.next!=null){
-            temp=temp.next;
+        if(head==null){
+            head=node;
+        }else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = node;
         }
-        temp.next=node;
         count++;
     }
 

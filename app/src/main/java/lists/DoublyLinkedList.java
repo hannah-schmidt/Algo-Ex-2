@@ -16,6 +16,17 @@ public class DoublyLinkedList<T> implements Listable<T>{
     public void add(Object data) {
         Node node=new Node();
         node.data=(T) data;
+
+        if(head==null){
+            head=node;
+            count++;
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=node;
         count++;
     }
 

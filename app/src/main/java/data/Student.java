@@ -3,14 +3,19 @@ package data;
 public class Student {
     private String prename;
     private String surname;
-    private String studiengang;
+    private int course;
+  //  private Course course;
     private int matriculationNumber;
 
-    public Student(String prename, String surname, String studiengang, int matriculationNumber) {
+ /*   public enum Course {
+       AngewandteInformatik, Wirtschaftsinformatik, Medieninformatik, Umweltinformatik
+    }*/
+
+    public Student(String prename, String surname, int course, int matriculationNumber) {
         super();
         this.prename = prename;
         this.surname = surname;
-        this.studiengang = studiengang;
+        this.course = course;
         this.matriculationNumber = matriculationNumber;
     }
 
@@ -30,12 +35,12 @@ public class Student {
         this.surname = surname;
     }
 
-    public String getStudiengang() {
-        return studiengang;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setStudiengang(String studiengang) {
-        this.studiengang = studiengang;
+    public void setStudiengang(Course course1) {
+        this.course = course1;
     }
 
     public int getMatriculationNumber() {
@@ -48,7 +53,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [prename=" + prename + ", surname=" + surname + ", course=" + studiengang + ", matriculationNumber="
+        return "Student [prename=" + prename + ", surname=" + surname + ", course=" + course + ", matriculationNumber="
                 + matriculationNumber + "]";
     }
 
