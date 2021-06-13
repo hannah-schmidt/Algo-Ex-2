@@ -11,7 +11,7 @@ public class Menu {
         System.out.println("1. SinglyLinkedList");
         System.out.println("2. DoublyLinkedList");
         System.out.println(" ");
-        int a=console.readInteger("Please enter a number for an option");
+        int a=console.readInteger("Please enter a number for an option", 0, 1);
         return a;
     }
 

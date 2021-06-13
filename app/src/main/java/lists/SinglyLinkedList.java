@@ -1,5 +1,7 @@
 package lists;
 
+import data.Student;
+
 public class SinglyLinkedList<T> implements Listable {
 
     private class Node {
@@ -87,17 +89,27 @@ public class SinglyLinkedList<T> implements Listable {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         Node temp=head;
         try {
             for (int i = 0; i < index; i++) {
-                temp = temp.next;
+                if(temp.next!=null){
+                    temp = temp.next;
+                }else{
+                    System.out.println(" ");
+                    System.out.println("End of list, object at index does not exist. Last object is printed below.");
+                    break;
+                }
             }
-        }catch (Exception e){
+            return temp.data;
+        }catch (NullPointerException e){
             System.out.println("Objekt an der Stelle "+index+" existiert nicht." );
             e.printStackTrace();
+            while(temp!=null) {
+                temp = temp.next;
+            }
         }
-        return temp;
+       return temp.data;
     }
 
     @Override
@@ -122,17 +134,24 @@ public class SinglyLinkedList<T> implements Listable {
     @Override
     public void printAll() {
         Node temp=head;
-        while(temp!=null){
+        while(temp.next!=null){
             System.out.println(temp.data);
             temp=temp.next;
         }
-
+        System.out.println(temp);
     }
 
     @Override
     public void switchnodes(int index) {
         Node temp=head;
-        for(int i=0;i<index-1;i++){
+        if(index==-1){
+            Node three=temp.next.next;
+            head=temp.next;
+            head.next=temp;
+            head.next.next=three;
+            return;
+        }
+        for(int i=0;i<index;i++){
             temp=temp.next;
         }
         Node next=temp.next;
@@ -141,6 +160,10 @@ public class SinglyLinkedList<T> implements Listable {
         temp.next.next=next;
         temp.next.next.next=four;
     }
+
+
+
+
 
 
 }

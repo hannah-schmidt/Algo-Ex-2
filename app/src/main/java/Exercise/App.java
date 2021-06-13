@@ -1,43 +1,62 @@
 package Exercise;
 
+import Console.Menu;
+import algorithms.Bubblesort;
+import algorithms.Selectionsort;
 import data.Student;
 import lists.Listable;
 import lists.SinglyLinkedList;
 import lists.DoublyLinkedList;
 
+import java.util.Random;
+
 public class App {
 
     public static void main(String[] args) {
-        run(new SinglyLinkedList<Student>());
-        run(new DoublyLinkedList<Student>());
+        Menu menu=new Menu();
+        int listart=menu.menu_lists();
+        if(listart==1){
+            SinglyLinkedList singlyLinkedList=new SinglyLinkedList();
+        }else if(listart==2){
+            DoublyLinkedList doublyLinkedList=new DoublyLinkedList();
+        }else{
+            System.out.println("Eingabe wurde nicht akzeptiet.");
+            menu.menu_lists();
+        }
     }
 
     private static void run(Listable<Student> students){
-        students.addLast(readStudents());
-        students.add(new Student("Amy", "Santiago", 10, 420));
-        Student s3=new Student("Gina", "Linetti", 10, 100);
-        students.addLast(s3);
-        printList(students);
+        makelist(students);
+        students.printAll();
+        System.out.println(" ");
+        System.out.println("Bubblesort:");
+        Bubblesort bubble=new Bubblesort();
+        bubble.bubbleSort_m(students).printAll();
+        students.clear();
+        System.out.println(" ");
+        System.out.println("NEW");
+        System.out.println(" ");
+        makelist(students);
+        students.printAll();
+        System.out.println(" ");
+        System.out.println("Selectionsort: ");
+        Selectionsort selectionsort=new Selectionsort();
+        selectionsort.selectionSort(students).printAll();
         students.clear();
         students.size();
     }
 
-    private static Student readStudents(){
-        Student student=new Student("Jake", "Peralta", 10, 96);
-        return student;
+    private static Listable makelist(Listable list) {
+        for (int i = 0; i < 20; i++) {
+            String a = "M";
+            String b = "M";
+            Random rd = new Random();
+            int c = rd.nextInt(1000);
+            int d = rd.nextInt(1000);
+            Student student = new Student(a, b, c, d);
+            list.add(student);
+        }
+        return list;
     }
 
-    private static void printList(Listable<Student> students){
-        System.out.println("Type: "+ students.getClass().getSimpleName());
-        System.out.println("Size: "+ students.size());
-        System.out.println("is empty: "+ students.isEmpty());
-        System.out.println("Students");
-        System.out.println("Get: "+students.get(0));
-        System.out.println("Get: "+students.get(1));
-        System.out.println("Get: "+students.get(2));
-        System.out.println("Get: "+students.get(-1));
-        System.out.println("Get: "+students.get(3));
-        System.out.println("All: ");
-        students.printAll();
-    }
 }

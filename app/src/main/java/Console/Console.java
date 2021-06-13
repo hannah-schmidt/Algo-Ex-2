@@ -45,7 +45,7 @@ public class Console implements IConsole {
     }
 
     @Override
-    public int readInteger(String text) {
+    public int readInteger(String text, int min, int max) {
         Scanner sc=new Scanner(System.in);
         int zahl=0;
         boolean accept=false;
@@ -53,7 +53,11 @@ public class Console implements IConsole {
             try {
                 System.out.println(text);
                 zahl = sc.nextInt();
-                accept=true;
+                if(zahl<max&&zahl>min){
+                    accept=true;
+                }else {
+                    System.out.println("Your input was not accepted. ");
+                }
                 sc.nextLine();
             } catch (Exception e) {
                 System.out.println("Your input was not accepted. "+text);

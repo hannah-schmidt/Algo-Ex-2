@@ -21,13 +21,15 @@ public class DoublyLinkedList<T> implements Listable<T>{
             head=node;
             count++;
             return;
+        }else {
+            Node temp = head;
+            while (temp.next!= null) {
+                temp = temp.next;
+            }
+            temp.next = node;
+            tail=node;
+            count++;
         }
-        Node temp=head;
-        while(temp.next!=null){
-            temp=temp.next;
-        }
-        temp.next=node;
-        count++;
     }
 
     @Override
@@ -39,6 +41,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
             head=node;
             count++;
         }else {
+            System.out.println("Fehler, ein erstes Element der Liste existiert bereits.");
             return;
         }
     }
@@ -56,6 +59,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
                 temp=temp.next;
             }
             temp.next=node;
+            tail=node;
         }
         count++;
     }
@@ -97,6 +101,9 @@ public class DoublyLinkedList<T> implements Listable<T>{
         if(head==temp){
             head=temp.next;
         }
+        if(temp.next==null){ //tbc, what else?
+            tail=temp.prev;
+        }
         if(temp.next!=null){
             temp.next.prev=temp.prev;
         }
@@ -114,20 +121,27 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public T get(int index) {
-        if((head==null)||(index<0)||(index<=size())){
+        if((head==null)||(index<0)||(index>count)){
+            System.out.println("Fehler, index zu groß oder zu klein.");
             return null;
         }
         Node temp=head;
-        for(int i=0;i<index;i++){
-            temp=temp.next;
+        for (int i = 0; i < index; i++) {
+            if(temp.next!=null){
+                temp = temp.next;
+            }else{
+                System.out.println("Object at index does not exist. Last object is printed below.");
+                return null;
+            }
         }
         return temp.data;
     }
 
     @Override
-    public int size() {     //geht effizienter
+    public int size() {
         return count;
     }
+
 
     @Override
     public boolean isEmpty() {
@@ -154,8 +168,15 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public void switchnodes(int index) {
-        Node temp=head;
-        for(int i=0;i<index-1;i++){
+       Node temp=head;
+        if(index==-1){
+            Node three=temp.next.next;
+            head=temp.next;
+            head.next=temp;
+            head.next.next=three;
+            return;
+        }
+        for(int i=0;i<index;i++){
             temp=temp.next;
         }
         Node next=temp.next;
