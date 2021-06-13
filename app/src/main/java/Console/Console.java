@@ -53,7 +53,7 @@ public class Console implements IConsole {
             try {
                 System.out.println(text);
                 zahl = sc.nextInt();
-                if(zahl<max&&zahl>min){
+                if(zahl<=max&&zahl>=min){
                     accept=true;
                 }else {
                     System.out.println("Your input was not accepted. ");

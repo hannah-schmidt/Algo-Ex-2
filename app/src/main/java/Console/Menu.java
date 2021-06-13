@@ -11,7 +11,7 @@ public class Menu {
         System.out.println("1. SinglyLinkedList");
         System.out.println("2. DoublyLinkedList");
         System.out.println(" ");
-        int a=console.readInteger("Please enter a number for an option", 0, 1);
+        int a=console.readInteger("Please enter a number for an option", 1, 2);
         return a;
     }
 
@@ -31,57 +31,63 @@ public class Menu {
         System.out.println("11. Sort list by different properties.");
         System.out.println(" 0. Exit program.");
         System.out.println(" ");
-        int a=console.readInteger("Please enter a number for an option: ");
+        int a=console.readInteger("Please enter a number for an option: ",0,11);
         return a;
     }
 
-    public Student menu_student(String text){
-        System.out.println(text);
+    public Student menu_student(){
         System.out.println(" ");
         String prename= console.readString("Please enter prename: ");
         String surname= console.readString("Please enter surname: ");
-        int course= console.readInteger("Please enter course number: ");
-        int mat= console.readInteger("Please enter matriculation number: ");
+        int course= console.readInteger("Please enter course number: ",0,100);
+        int mat= console.readInteger("Please enter matriculation number: ",10000,99999);
         Student student= new Student(prename, surname, course, mat);
         return student;
     }
 
-    public int menu_search(String text){
-        System.out.println(text);
+    public int menu_search(){
+        System.out.println("Select a property to search for the student: ");
         System.out.println(" ");
         System.out.println("1. Search by prename?");
         System.out.println("2. Search by surname?");
         System.out.println("3. Search by course number?");
         System.out.println("4. Search by matriculation number?");
         System.out.println(" ");
-        int a=console.readInteger("Please enter a number for an option: ");
+        int a=console.readInteger("Please enter a number for an option: ",1,4);
         return a;
     }
 
-    public int menu_sort(String text){
-        System.out.println(text);
+    public int menu_sort(){
+        System.out.println("Select a sorting method for sorting: ");
         System.out.println(" ");
         System.out.println("1. Bubblesort?");
         System.out.println("2. Selectionsort?");
         System.out.println(" ");
-        int a=console.readInteger("Please enter a number for an option: ");
+        int a=console.readInteger("Please enter a number for an option: ",1,2);
         return a;
     }
 
-    public int menu_sortby(String text){
-        System.out.println(text);
-        System.out.println(" ");
-        System.out.println("1. Sort by course?");
-        System.out.println("2. Sort by matriculation number?");
-        System.out.println(" ");
-        int a= console.readInteger("Please enter a number for an option: ");
-        return a;
+    public int menu_sortby(int option){
+        String text;
+        if(option==1){
+            System.out.println("Please select a property for sorting with the Bubblesort algorithm:");
+            System.out.println(" ");
+            System.out.println("1. Sort by course?");
+            System.out.println("2. Sort by matriculation number?");
+            System.out.println(" ");
+            int a= console.readInteger("Please enter a number for an option: ",1,2);
+            return a;
+        }else{
+            System.out.println("Please select a property for sorting with the Selectionsort algorithm:");
+            System.out.println(" ");
+            System.out.println("1. Sort by course?");
+            System.out.println("2. Sort by matriculation number?");
+            System.out.println(" ");
+            int a= console.readInteger("Please enter a number for an option: ",1,2);
+            return a;
+        }
+
     }
 
-    public void sort(){
-        System.out.println("ich hab hunger und möchte etwas essen");
-        System.out.println("aber ich bin zu faul um mir was zu kochen leider");
-        System.out.println("deswegen werde ich jetzt wohl weiter gummibärchen fressen");
-    }
 
 }
