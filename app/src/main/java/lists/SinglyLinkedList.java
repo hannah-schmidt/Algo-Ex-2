@@ -33,7 +33,7 @@ public class SinglyLinkedList<T> implements Listable {
     public void addFirst(Object data) {
         Node node=new Node();
         node.data= (T) data;
-        node.next=null;
+        node.next=head;
         head=node;
         count++;
     }
@@ -56,7 +56,7 @@ public class SinglyLinkedList<T> implements Listable {
     }
 
     @Override
-    public void insert(int index) {
+    public void insert(int index, Object data ) {
         count++;
     }
 
@@ -138,7 +138,7 @@ public class SinglyLinkedList<T> implements Listable {
             System.out.println(temp.data);
             temp=temp.next;
         }
-        System.out.println(temp);
+        System.out.println(temp.data);
     }
 
     @Override

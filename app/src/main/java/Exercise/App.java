@@ -25,30 +25,45 @@ public class App {
                 switch (opt){
                     case 0: System.exit(0);
                     case 1: singlyLinkedList.add(menu.menu_student());
-                    case 2: singlyLinkedList.insert(10);
+                            break;
+                    case 2: singlyLinkedList.insert(console.readInteger("Pleaser enter index for new object.",0, singlyLinkedList.size()),menu.menu_student());
+                            break;
                     case 3: singlyLinkedList.addFirst(menu.menu_student());
+                            break;
                     case 4: singlyLinkedList.addLast(menu.menu_student());
-                    case 5: singlyLinkedList.get(console.readInteger("Please enter index of wanted Element", 0, singlyLinkedList.size()));
+                            break;
+                    case 5: System.out.println(singlyLinkedList.get(console.readInteger("Please enter index of wanted Element", 0, singlyLinkedList.size())));
+                            break;
                     case 6: singlyLinkedList.printAll();
-                    case 7: singlyLinkedList.size();
+                            break;
+                    case 7: System.out.println("Size of list: "+singlyLinkedList.size());
+                            break;
                     case 8: singlyLinkedList.remove(console.readInteger("Please enter index of Element to be removed.", 0, singlyLinkedList.size()));
+                            break;
                     case 9: singlyLinkedList.clear();
+                            if(singlyLinkedList.isEmpty()==true){
+                                System.out.println("All elements have been removed.");
+                            }else{
+                                System.out.println("Failed to remove all elements.");
+                            }
+                            break;
                     case 10: singlyLinkedList.get(menu.menu_search());
+                            break;
                     case 11: if(menu.menu_sort()==1) {
                         Bubblesort bubble = new Bubblesort();
                         if (menu.menu_sortby(1) == 1) {
-                            bubble.bubbleSort_c(singlyLinkedList);
+                            bubble.bubbleSort_c(singlyLinkedList).printAll();
                         } else {
-                            bubble.bubbleSort_m(singlyLinkedList);
+                            bubble.bubbleSort_m(singlyLinkedList).printAll();
                         }
                     } else{
                         Selectionsort select=new Selectionsort();
                         if(menu.menu_sortby(2)==1){
-                            select.selectionSort_c(singlyLinkedList);
+                            select.selectionSort_c(singlyLinkedList).printAll();
                         }else{
-                            select.selectionSort_m(singlyLinkedList);
+                            select.selectionSort_m(singlyLinkedList).printAll();
                         }
-                    }
+                    }break;
                 }
             }while(true);
         }else{
@@ -58,31 +73,48 @@ public class App {
                 System.out.println(" ");
                 switch (opt){
                     case 0: System.exit(0);
+                        break;
                     case 1: doublyLinkedList.add(menu.menu_student());
-                    case 2: doublyLinkedList.insert(10);
+                            break;
+                    case 2: doublyLinkedList.insert(console.readInteger("Pleaser enter index for new object.",0, doublyLinkedList.size()),menu.menu_student());
+                            break;
                     case 3: doublyLinkedList.addFirst(menu.menu_student());
+                            break;
                     case 4: doublyLinkedList.addLast(menu.menu_student());
-                    case 5: doublyLinkedList.get(console.readInteger("Please enter index of wanted Element", 0, doublyLinkedList.size()));
+                            break;
+                    case 5: System.out.println(doublyLinkedList.get(console.readInteger("Please enter index of wanted Element", 0, doublyLinkedList.size())));
+                            break;
                     case 6: doublyLinkedList.printAll();
-                    case 7: doublyLinkedList.size();
+                            break;
+                    case 7:
+                        System.out.println("Size of list: "+doublyLinkedList.size());
+                            break;
                     case 8: doublyLinkedList.remove(console.readInteger("Please enter index of Element to be removed.", 0, doublyLinkedList.size()));
+                            break;
                     case 9: doublyLinkedList.clear();
-                    case 10: doublyLinkedList.get(menu.menu_search());
+                            if(doublyLinkedList.isEmpty()==true){
+                                System.out.println("All elements have been removed.");
+                            }else{
+                                System.out.println("Failed to remove all elements.");
+                            }
+                            break;
+                    case 10: System.out.println(doublyLinkedList.get(menu.menu_search()));
+                            break;
                     case 11: if(menu.menu_sort()==1) {
                         Bubblesort bubble = new Bubblesort();
                         if (menu.menu_sortby(1) == 1) {
-                            bubble.bubbleSort_c(doublyLinkedList);
+                            bubble.bubbleSort_c(doublyLinkedList).printAll();
                         } else {
-                            bubble.bubbleSort_m(doublyLinkedList);
+                            bubble.bubbleSort_m(doublyLinkedList).printAll();
                         }
                     } else{
                         Selectionsort select=new Selectionsort();
                         if(menu.menu_sortby(2)==1){
-                            select.selectionSort_c(doublyLinkedList);
+                            select.selectionSort_c(doublyLinkedList).printAll();
                         }else{
-                            select.selectionSort_m(doublyLinkedList);
+                            select.selectionSort_m(doublyLinkedList).printAll();
                         }
-                    }
+                    }break;
                 }
             }while(true);
         }

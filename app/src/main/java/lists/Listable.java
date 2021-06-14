@@ -7,7 +7,7 @@ public interface Listable<T> {
 
     void addLast(T data);
 
-    void insert(int index);
+    void insert(int index, Object data);
 
     void remove(int index);
 
