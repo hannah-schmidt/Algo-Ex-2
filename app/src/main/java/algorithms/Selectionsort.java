@@ -2,17 +2,19 @@ package algorithms;
 
 import data.Student;
 import lists.Listable;
+import lists.SinglyLinkedList;
 
 public class Selectionsort {
-    public Listable selectionSort_m(Listable list){
-        for (int i = 0; i < list.size() - 1; i++)
-        {
+    public Listable selectionSort_m(Listable sortlist){
+        SinglyLinkedList list=new SinglyLinkedList();
+        list= (SinglyLinkedList) sortlist;
+        for (int i = 0; i < list.size() - 1; i++) {
             int index = i;
             Student student1= (Student) list.get(i);
             for (int j = i + 1; j < list.size(); j++){
                 Student student_i= (Student) list.get(j);
                 if (student_i.getMatriculationNumber() < student1.getMatriculationNumber()){
-                    index = j;//searching for lowest index
+                    index = j;
                 }
             }
             switchnodes(i, index, list);
@@ -20,15 +22,16 @@ public class Selectionsort {
         return list;
     }
 
-    public Listable selectionSort_c(Listable list){
-        for (int i = 0; i < list.size() - 1; i++)
-        {
+    public Listable selectionSort_c(Listable sortlist){
+        SinglyLinkedList list=new SinglyLinkedList();
+        list= (SinglyLinkedList) sortlist;
+        for (int i = 0; i < list.size() - 1; i++) {
             int index = i;
             Student student1= (Student) list.get(i);
             for (int j = i + 1; j < list.size(); j++){
                 Student student_i= (Student) list.get(j);
                 if (student_i.getCourse() < student1.getCourse()){
-                    index = j;//searching for lowest index
+                    index = j;
                 }
             }
             switchnodes(i, index, list);

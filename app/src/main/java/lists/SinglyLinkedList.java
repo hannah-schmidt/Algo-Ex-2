@@ -69,13 +69,10 @@ public class SinglyLinkedList<T> implements Listable {
             }
         }catch (Exception e){
             System.out.println("Objekt an der Stelle "+index+" existiert nicht." );
-            e.printStackTrace();
-        }
-        if(head==null || temp==null){
             return;
         }
-        if(head==temp){
-            temp.next=null;
+        if(temp==head) {
+            head = temp.next;
         }else{
             temp.next=temp.next.next;
         }

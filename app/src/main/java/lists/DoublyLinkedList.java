@@ -65,7 +65,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
     }
 
     @Override
-    public void insert(int index, Object data) { //wtf müsste nicht ein object T übergeben werden???
+    public void insert(int index, Object data) {
         Node temp=head;
         try {
             for (int i = 0; i < index; i++) {

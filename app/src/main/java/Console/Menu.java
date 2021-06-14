@@ -56,6 +56,27 @@ public class Menu {
         int a=console.readInteger("Please enter a number for an option: ",1,4);
         return a;
     }
+    public int menu_search_int(int opt){
+        if(opt==3){
+            int a=console.readInteger("Please enter a course number: ",1,100);
+            return a;
+        }else if(opt==4){
+            int a= console.readInteger("Please enter a matriculation number: ",10000,99999);
+            return a;
+        }
+        return 0;
+    }
+
+    public String menu_search_String(int opt){
+        if(opt==1){
+            String a=console.readString("Please enter a prename: ");
+            return a;
+        }else if(opt==2){
+            String a= console.readString("Please enter a surname: ");
+            return a;
+        }
+        return null;
+    }
 
     public int menu_sort(){
         System.out.println("Select a sorting method for sorting: ");

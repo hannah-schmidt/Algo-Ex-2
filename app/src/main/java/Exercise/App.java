@@ -3,6 +3,7 @@ package Exercise;
 import Console.Console;
 import Console.Menu;
 import algorithms.Bubblesort;
+import algorithms.Search;
 import algorithms.Selectionsort;
 import data.Student;
 import lists.Listable;
@@ -10,7 +11,7 @@ import lists.SinglyLinkedList;
 import lists.DoublyLinkedList;
 
 import java.util.Random;
-
+//TODO: selectionsort_m, search,
 public class App {
 
     public static void main(String[] args) {
@@ -19,6 +20,10 @@ public class App {
         int listart=menu.menu_lists();
         if(listart==1){
             SinglyLinkedList singlyLinkedList=new SinglyLinkedList();
+            singlyLinkedList.add(new Student("a","a",10, 12345));
+            singlyLinkedList.add(new Student("b","b",99, 12343));
+            singlyLinkedList.add(new Student("c","c",24, 10000));
+            singlyLinkedList.add(new Student("d","d",8, 99345));
             do {
                 int opt=menu.menu_main("You selected SinglyLinkedList:");
                 System.out.println(" ");
@@ -47,7 +52,13 @@ public class App {
                                 System.out.println("Failed to remove all elements.");
                             }
                             break;
-                    case 10: singlyLinkedList.get(menu.menu_search());
+                    case 10: Search search=new Search();
+                            int option=menu.menu_search();
+                            if(option<3){
+                                System.out.println(search.search_name(menu.menu_search_String(option),singlyLinkedList, option));
+                            }else{
+                                System.out.println(search.search_int(menu.menu_search_int(option),singlyLinkedList,option));
+                            }
                             break;
                     case 11: if(menu.menu_sort()==1) {
                         Bubblesort bubble = new Bubblesort();
@@ -63,7 +74,8 @@ public class App {
                         }else{
                             select.selectionSort_m(singlyLinkedList).printAll();
                         }
-                    }break;
+                    }
+                    break;
                 }
             }while(true);
         }else{
@@ -89,7 +101,7 @@ public class App {
                     case 7:
                         System.out.println("Size of list: "+doublyLinkedList.size());
                             break;
-                    case 8: doublyLinkedList.remove(console.readInteger("Please enter index of Element to be removed.", 0, doublyLinkedList.size()));
+                    case 8: doublyLinkedList.remove(console.readInteger("Please enter index of Element to be removed.", 1, doublyLinkedList.size()));
                             break;
                     case 9: doublyLinkedList.clear();
                             if(doublyLinkedList.isEmpty()==true){
@@ -98,7 +110,13 @@ public class App {
                                 System.out.println("Failed to remove all elements.");
                             }
                             break;
-                    case 10: System.out.println(doublyLinkedList.get(menu.menu_search()));
+                    case 10: Search search=new Search();
+                            int option=menu.menu_search();
+                            if(option<3){
+                                System.out.println(search.search_name(menu.menu_search_String(option),doublyLinkedList, option));
+                            }else{
+                                System.out.println(search.search_int(menu.menu_search_int(option),doublyLinkedList,option));
+                            }
                             break;
                     case 11: if(menu.menu_sort()==1) {
                         Bubblesort bubble = new Bubblesort();
@@ -114,7 +132,8 @@ public class App {
                         }else{
                             select.selectionSort_m(doublyLinkedList).printAll();
                         }
-                    }break;
+                    }
+                    break;
                 }
             }while(true);
         }

@@ -2,10 +2,13 @@ package algorithms;
 
 import data.Student;
 import lists.Listable;
+import lists.SinglyLinkedList;
 
 
 public class Bubblesort {
-    public Listable bubbleSort_c(Listable list) {
+    public Listable bubbleSort_c(Listable sortlist) {
+        SinglyLinkedList list=new SinglyLinkedList();
+        list= (SinglyLinkedList) sortlist;
         int n = list.size();
         Student student1;
         Student student2;
@@ -15,7 +18,6 @@ public class Bubblesort {
                 student1 = (Student) list.get(j);
                 student2 = (Student) list.get(j + 1);
                 if (student1.getCourse() > student2.getCourse()) {
-                    //list.switchnodes(j-1);
                     switchnodes(j,j+1, list);
                 }
             }
@@ -23,7 +25,9 @@ public class Bubblesort {
         return list;
     }
 
-    public Listable bubbleSort_m(Listable list) {
+    public Listable bubbleSort_m(Listable sortlist) {
+        SinglyLinkedList list=new SinglyLinkedList();
+        list= (SinglyLinkedList) sortlist;
         int n = list.size();
         Student student1;
         Student student2;
@@ -36,7 +40,6 @@ public class Bubblesort {
                     break;
                 }
                 if (student1.getMatriculationNumber() > student2.getMatriculationNumber()) {
-                    //list.switchnodes(j-1);
                     switchnodes(j,j+1, list);
                 }
             }
