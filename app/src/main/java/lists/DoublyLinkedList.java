@@ -1,5 +1,7 @@
 package lists;
 
+import com.sun.security.auth.UnixNumericGroupPrincipal;
+
 public class DoublyLinkedList<T> implements Listable<T>{
 
         private Node head = null;
@@ -44,7 +46,9 @@ public class DoublyLinkedList<T> implements Listable<T>{
             count++;
             return;
         }else {
-            node.next = head;
+            node.next=head;
+            head.prev=node;
+            head=node;
             node.next.prev = node;
         }
     }
@@ -70,22 +74,24 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public void insert(int index, Object data) {
+        Node node=new Node();
+        node.data= (T) data;
         Node temp=head;
+        if(head==null || temp==null){
+            return;
+        }
         try {
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index-1; i++) {
                 temp = temp.next;
             }
         }catch (Exception e){
             System.out.println("Objekt an der Stelle "+index+" existiert nicht." );
             e.printStackTrace();
         }
-        if(head==null || temp==null){
-            return;
-        }
-        if(head==temp){
-            head=temp.next;
-        }
-
+        node.next=temp.next;
+        node.prev=temp;
+        temp.next=node;
+        //node.next.prev=node;
     }
 
     @Override
@@ -104,15 +110,19 @@ public class DoublyLinkedList<T> implements Listable<T>{
         }
         if(head==temp){
             head=temp.next;
+            temp.prev=null;
+            return;
         }
         if(temp.next==null){ //tbc, what else?
             tail=temp.prev;
+            temp.prev.next=null;
+            return;
         }
         if(temp.next!=null){
             temp.next.prev=temp.prev;
-        }
-        if(temp.prev!=null){
-            temp.prev.next=temp.next;
+            if(temp.prev!=null){
+                temp.prev.next=temp.next;
+            }
         }
         count--;
     }
@@ -120,6 +130,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
     @Override
     public void clear() {
         head=null;
+        tail=null;
         count=0;
     }
 

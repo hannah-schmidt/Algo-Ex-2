@@ -17,7 +17,7 @@ public class Selectionsort {
             int index = i;
             Student student1= (Student) list.get(i);
             int wert= student1.getMatriculationNumber();
-            for (int j = i + 1; j < list.size(); j++){
+            for (int j = i + 1; j < list.size()-1; j++){
                 Student student_i= (Student) list.get(j);
                 if (student_i.getMatriculationNumber() < wert){
                     index = j;

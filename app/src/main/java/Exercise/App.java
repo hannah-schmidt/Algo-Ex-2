@@ -11,7 +11,7 @@ import lists.SinglyLinkedList;
 import lists.DoublyLinkedList;
 
 import java.util.Random;
-//TODO:  doubly(2,3,8) enum,
+//TODO:  enum
 public class App {
 
     public static void main(String[] args) {
