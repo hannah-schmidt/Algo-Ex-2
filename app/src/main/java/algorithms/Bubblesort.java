@@ -1,14 +1,19 @@
 package algorithms;
 
 import data.Student;
+import lists.DoublyLinkedList;
 import lists.Listable;
 import lists.SinglyLinkedList;
 
 
 public class Bubblesort {
     public Listable bubbleSort_c(Listable sortlist) {
-        SinglyLinkedList list=new SinglyLinkedList();
-        list= (SinglyLinkedList) sortlist;
+        Listable list;
+        if(sortlist.toString().contains("DoublyLinkedList")){
+            list= (DoublyLinkedList) sortlist;
+        }else{
+            list= (SinglyLinkedList) sortlist;
+        }
         int n = list.size();
         Student student1;
         Student student2;
@@ -26,8 +31,12 @@ public class Bubblesort {
     }
 
     public Listable bubbleSort_m(Listable sortlist) {
-        SinglyLinkedList list=new SinglyLinkedList();
-        list= (SinglyLinkedList) sortlist;
+        Listable list;
+        if(sortlist.toString().contains("DoublyLinkedList")){
+            list= (DoublyLinkedList) sortlist;
+        }else{
+            list= (SinglyLinkedList) sortlist;
+        }
         int n = list.size();
         Student student1;
         Student student2;

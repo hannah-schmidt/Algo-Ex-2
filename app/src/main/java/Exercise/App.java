@@ -11,7 +11,7 @@ import lists.SinglyLinkedList;
 import lists.DoublyLinkedList;
 
 import java.util.Random;
-//TODO: selectionsort_m, search,
+//TODO:  doubly(2,3,8) enum,
 public class App {
 
     public static void main(String[] args) {
@@ -78,8 +78,13 @@ public class App {
                     break;
                 }
             }while(true);
-        }else{
+        }
+        else{
             DoublyLinkedList doublyLinkedList=new DoublyLinkedList();
+            doublyLinkedList.add(new Student("a","a",10, 12345));
+            doublyLinkedList.add(new Student("b","b",99, 12343));
+            doublyLinkedList.add(new Student("c","c",24, 10000));
+            doublyLinkedList.add(new Student("d","d",8, 99345));
             do {
                 int opt=menu.menu_main("You selected DoublyLinkedList:");
                 System.out.println(" ");
@@ -137,8 +142,6 @@ public class App {
                 }
             }while(true);
         }
-
-
     }
 
     private static void run(Listable<Student> students){

@@ -57,7 +57,14 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public void insert(int index, Object data ) {
-        count++;
+        Node insert=new Node();
+        insert.data= (T) data;
+        Node temp=head;
+        for(int i=0;i<index-1; i++){
+            temp=temp.next;
+        }
+        insert.next=temp.next;
+        temp.next=insert;
     }
 
     @Override
@@ -111,6 +118,12 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public int size() {
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
         return count;
     }
 

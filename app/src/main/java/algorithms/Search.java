@@ -24,14 +24,14 @@ public class Search {
     }
     public Student search_int(int number, Listable list, int opt){
         switch (opt){
-            case 1: for(int i=0; i< list.size();i++){
+            case 3: for(int i=0; i< list.size();i++){
                         Student student= (Student) list.get(i);
                         if(number==(student.getCourse())){
                             return student;
                         }
                     }
                     break;
-            case 2: for(int i=0; i< list.size();i++){
+            case 4: for(int i=0; i< list.size();i++){
                         Student student= (Student) list.get(i);
                         if(number==(student.getMatriculationNumber())){
                             return student;

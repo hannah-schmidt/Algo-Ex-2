@@ -19,6 +19,8 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
         if(head==null){
             head=node;
+            node.next=null;
+            node.prev=null;
             count++;
             return;
         }else {
@@ -27,6 +29,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
                 temp = temp.next;
             }
             temp.next = node;
+            node.prev=temp;
             tail=node;
             count++;
         }
@@ -36,13 +39,13 @@ public class DoublyLinkedList<T> implements Listable<T>{
     public void addFirst(Object data) {
         Node node=new Node();
         node.data = (T) data;
-        node.next=head;
         if(head==null){
             head=node;
             count++;
-        }else {
-            System.out.println("Fehler, ein erstes Element der Liste existiert bereits.");
             return;
+        }else {
+            node.next = head;
+            node.next.prev = node;
         }
     }
 
@@ -59,6 +62,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
                 temp=temp.next;
             }
             temp.next=node;
+            node.prev=temp;
             tail=node;
         }
         count++;
@@ -139,6 +143,12 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public int size() {
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
         return count;
     }
 
