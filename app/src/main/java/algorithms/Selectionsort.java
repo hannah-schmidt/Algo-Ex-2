@@ -39,11 +39,11 @@ public class Selectionsort {
         for (int i = 0; i < list.size() ; i++) {
             Student student1= (Student) list.get(i);
             int index = i;
-            int wert = student1.getCourse();
+            int wert = student1.getCourse().ordinal();
             for (int j = i + 1; j < list.size(); j++){
                 Student student_j= (Student) list.get(j);
-                if (student_j.getCourse() < wert){
-                    wert= student_j.getCourse();
+                if (student_j.getCourse().ordinal() < wert){
+                    wert= student_j.getCourse().ordinal();
                     index = j;
                 }
             }

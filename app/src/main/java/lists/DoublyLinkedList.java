@@ -1,6 +1,9 @@
 package lists;
 
 import com.sun.security.auth.UnixNumericGroupPrincipal;
+import data.Student;
+
+import static data.Student.Course.AI;
 
 public class DoublyLinkedList<T> implements Listable<T>{
 
@@ -80,22 +83,32 @@ public class DoublyLinkedList<T> implements Listable<T>{
         if(head==null || temp==null){
             return;
         }
-        try {
-            for (int i = 0; i < index-1; i++) {
-                temp = temp.next;
+        if (index==0){
+            head=node;
+            node.next=temp;
+            node.next.prev=node;
+        }else {
+            try {
+                for (int i = 0; i < index - 1; i++) {
+                    temp = temp.next;
+                }
+            } catch (Exception e) {
+                System.out.println("Objekt an der Stelle " + index + " existiert nicht.");
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            System.out.println("Objekt an der Stelle "+index+" existiert nicht." );
-            e.printStackTrace();
+            node.next = temp.next;
+            node.prev = temp;
+            temp.next = node;
+            //node.next.prev=node;
         }
-        node.next=temp.next;
-        node.prev=temp;
-        temp.next=node;
-        //node.next.prev=node;
     }
 
     @Override
     public void remove(int index) {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
         Node temp=head;
         try {
             for (int i = 0; i < index; i++) {
@@ -137,8 +150,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
     @Override
     public T get(int index) {
         if((head==null)||(index<0)||(index>count)){
-            System.out.println("Fehler, index zu groß oder zu klein.");
-            return null;
+            return (T) "List is empty.";
         }
         Node temp=head;
         for (int i = 0; i < index; i++) {
@@ -171,6 +183,10 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public void set(int index, Object data) {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
         Node temp=head;
         for(int i=0;i<index;i++){
             temp=temp.next;
@@ -180,6 +196,10 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public void printAll() {
+            if(isEmpty()){
+                System.out.println("List is empty");
+                return;
+            }
         Node temp=head;
         while(temp!=null){
             System.out.println(temp.data);
@@ -189,6 +209,10 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
     @Override
     public void switchnodes(int index) {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
        Node temp=head;
         if(index==-1){
             Node three=temp.next.next;

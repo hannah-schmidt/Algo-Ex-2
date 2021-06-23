@@ -60,15 +60,25 @@ public class SinglyLinkedList<T> implements Listable {
         Node insert=new Node();
         insert.data= (T) data;
         Node temp=head;
-        for(int i=0;i<index-1; i++){
-            temp=temp.next;
+        if(index==0){
+            head=insert;
+            insert.next=temp;
+        }else {
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            insert.next=temp.next;
+            temp.next=insert;
         }
-        insert.next=temp.next;
-        temp.next=insert;
+
     }
 
     @Override
     public void remove(int index) {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
         Node temp=head;
         try {
             for (int i = 0; i < index-1; i++) {
@@ -94,6 +104,9 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public T get(int index) {
+        if((head==null)||(index<0)||(index>count)){
+            return (T) "List is empty.";
+        }
         Node temp=head;
         try {
             for (int i = 0; i < index; i++) {
@@ -134,6 +147,10 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public void set(int index, Object data) {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
         Node temp=head;
         for(int i=0;i<index;i++){
             temp=temp.next;
@@ -143,6 +160,10 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public void printAll() {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
         Node temp=head;
         while(temp.next!=null){
             System.out.println(temp.data);
@@ -153,6 +174,10 @@ public class SinglyLinkedList<T> implements Listable {
 
     @Override
     public void switchnodes(int index) {
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
         Node temp=head;
         if(index==-1){
             Node three=temp.next.next;

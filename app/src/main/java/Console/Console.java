@@ -14,7 +14,7 @@ public class Console implements IConsole {
             int countZ=0;
             int countS=0;
             try {
-                System.out.println(text);
+                System.out.print(text+" ");
                 s = sc.nextLine();
                 for(int i=0; i<s.length();i++){
                     s=s.replace(" ", "");
@@ -51,7 +51,7 @@ public class Console implements IConsole {
         boolean accept=false;
         while(accept==false) {
             try {
-                System.out.println(text);
+                System.out.print(text+" ");
                 zahl = sc.nextInt();
                 if(zahl<=max&&zahl>=min){
                     accept=true;

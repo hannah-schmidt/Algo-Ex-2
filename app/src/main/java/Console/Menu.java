@@ -11,7 +11,7 @@ public class Menu {
         System.out.println("1. SinglyLinkedList");
         System.out.println("2. DoublyLinkedList");
         System.out.println(" ");
-        int a=console.readInteger("Please enter a number for an option", 1, 2);
+        int a=console.readInteger("Please enter a number for an option:", 1, 2);
         return a;
     }
 
@@ -39,7 +39,7 @@ public class Menu {
         System.out.println(" ");
         String prename= console.readString("Please enter prename: ");
         String surname= console.readString("Please enter surname: ");
-        int course= console.readInteger("Please enter course number: ",0,100);
+        Student.Course course= menu_course();
         int mat= console.readInteger("Please enter matriculation number: ",10000,99999);
         Student student= new Student(prename, surname, course, mat);
         return student;
@@ -56,15 +56,16 @@ public class Menu {
         int a=console.readInteger("Please enter a number for an option: ",1,4);
         return a;
     }
-    public int menu_search_int(int opt){
+
+    public <T> T menu_search_int(int opt){
         if(opt==3){
-            int a=console.readInteger("Please enter a course number: ",1,100);
-            return a;
+            Student.Course course =menu_course();
+            return (T) course;
         }else if(opt==4){
             int a= console.readInteger("Please enter a matriculation number: ",10000,99999);
-            return a;
+            return (T) new Integer(a);
         }
-        return 0;
+        return null;
     }
 
     public String menu_search_String(int opt){
@@ -88,26 +89,45 @@ public class Menu {
         return a;
     }
 
-    public int menu_sortby(int option){
+    public int menu_sortby(int option) {
         String text;
-        if(option==1){
+        if (option == 1) {
             System.out.println("Please select a property for sorting with the Bubblesort algorithm:");
             System.out.println(" ");
             System.out.println("1. Sort by course?");
             System.out.println("2. Sort by matriculation number?");
             System.out.println(" ");
-            int a= console.readInteger("Please enter a number for an option: ",1,2);
+            int a = console.readInteger("Please enter a number for an option: ", 1, 2);
             return a;
-        }else{
+        } else {
             System.out.println("Please select a property for sorting with the Selectionsort algorithm:");
             System.out.println(" ");
             System.out.println("1. Sort by course?");
             System.out.println("2. Sort by matriculation number?");
             System.out.println(" ");
-            int a= console.readInteger("Please enter a number for an option: ",1,2);
+            int a = console.readInteger("Please enter a number for an option: ", 1, 2);
             return a;
         }
-
+    }
+    public Student.Course menu_course(){
+        System.out.println(" ");
+        System.out.println("Please select a Course");
+        System.out.println("1. "+ Student.Course.AI);
+        System.out.println("2. "+ Student.Course.GD);
+        System.out.println("3. "+ Student.Course.UI);
+        System.out.println("4. "+ Student.Course.MI);
+        System.out.println("5. "+ Student.Course.BWL);
+        System.out.println("6. "+ Student.Course.WI);
+        int a= console.readInteger("Please enter a number for an option: ",1,6);
+        switch (a){
+            case 1: return Student.Course.AI;
+            case 2: return Student.Course.GD;
+            case 3: return Student.Course.UI;
+            case 4: return Student.Course.MI;
+            case 5: return Student.Course.BWL;
+            case 6: return Student.Course.WI;
+    }
+    return null;
     }
 
 

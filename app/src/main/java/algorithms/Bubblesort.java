@@ -22,7 +22,7 @@ public class Bubblesort {
                 int a = j + 1;
                 student1 = (Student) list.get(j);
                 student2 = (Student) list.get(j + 1);
-                if (student1.getCourse() > student2.getCourse()) {
+                if (student1.getCourse().ordinal() > student2.getCourse().ordinal()) {
                     switchnodes(j,j+1, list);
                 }
             }

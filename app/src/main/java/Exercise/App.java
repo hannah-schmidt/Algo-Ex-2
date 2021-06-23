@@ -11,7 +11,9 @@ import lists.SinglyLinkedList;
 import lists.DoublyLinkedList;
 
 import java.util.Random;
-//TODO:  enum
+
+import static data.Student.Course.*;
+
 public class App {
 
     public static void main(String[] args) {
@@ -20,10 +22,10 @@ public class App {
         int listart=menu.menu_lists();
         if(listart==1){
             SinglyLinkedList singlyLinkedList=new SinglyLinkedList();
-            singlyLinkedList.add(new Student("a","a",10, 12345));
-            singlyLinkedList.add(new Student("b","b",99, 12343));
-            singlyLinkedList.add(new Student("c","c",24, 10000));
-            singlyLinkedList.add(new Student("d","d",8, 99345));
+            singlyLinkedList.add(new Student("a","a",AI, 12345));
+            singlyLinkedList.add(new Student("b","b",AI, 12343));
+            singlyLinkedList.add(new Student("c","c",WI, 10000));
+            singlyLinkedList.add(new Student("d","d",BWL, 99345));
             do {
                 int opt=menu.menu_main("You selected SinglyLinkedList:");
                 System.out.println(" ");
@@ -31,19 +33,19 @@ public class App {
                     case 0: System.exit(0);
                     case 1: singlyLinkedList.add(menu.menu_student());
                             break;
-                    case 2: singlyLinkedList.insert(console.readInteger("Pleaser enter index for new object.",0, singlyLinkedList.size()),menu.menu_student());
+                    case 2: singlyLinkedList.insert(console.readInteger("Pleaser enter index for new object:",0, singlyLinkedList.size()),menu.menu_student());
                             break;
                     case 3: singlyLinkedList.addFirst(menu.menu_student());
                             break;
                     case 4: singlyLinkedList.addLast(menu.menu_student());
                             break;
-                    case 5: System.out.println(singlyLinkedList.get(console.readInteger("Please enter index of wanted Element", 0, singlyLinkedList.size())));
+                    case 5: System.out.println(singlyLinkedList.get(console.readInteger("Please enter index of wanted Element:", 0, singlyLinkedList.size())));
                             break;
                     case 6: singlyLinkedList.printAll();
                             break;
                     case 7: System.out.println("Size of list: "+singlyLinkedList.size());
                             break;
-                    case 8: singlyLinkedList.remove(console.readInteger("Please enter index of Element to be removed.", 0, singlyLinkedList.size()));
+                    case 8: singlyLinkedList.remove(console.readInteger("Please enter index of Element to be removed:", 0, singlyLinkedList.size()));
                             break;
                     case 9: singlyLinkedList.clear();
                             if(singlyLinkedList.isEmpty()==true){
@@ -55,9 +57,11 @@ public class App {
                     case 10: Search search=new Search();
                             int option=menu.menu_search();
                             if(option<3){
-                                System.out.println(search.search_name(menu.menu_search_String(option),singlyLinkedList, option));
+                                search.search_name(menu.menu_search_String(option),singlyLinkedList, option);
+                            }else if(option==4){
+                                search.search_int(menu.menu_search_int(option),singlyLinkedList);
                             }else{
-                                System.out.println(search.search_int(menu.menu_search_int(option),singlyLinkedList,option));
+                                search.search_course(menu.menu_course(),singlyLinkedList);
                             }
                             break;
                     case 11: if(menu.menu_sort()==1) {
@@ -81,10 +85,10 @@ public class App {
         }
         else{
             DoublyLinkedList doublyLinkedList=new DoublyLinkedList();
-            doublyLinkedList.add(new Student("a","a",10, 12345));
-            doublyLinkedList.add(new Student("b","b",99, 12343));
-            doublyLinkedList.add(new Student("c","c",24, 10000));
-            doublyLinkedList.add(new Student("d","d",8, 99345));
+            doublyLinkedList.add(new Student("a","a",AI, 12345));
+            doublyLinkedList.add(new Student("b","b",AI, 12343));
+            doublyLinkedList.add(new Student("c","c",WI, 10000));
+            doublyLinkedList.add(new Student("d","d",BWL, 99345));
             do {
                 int opt=menu.menu_main("You selected DoublyLinkedList:");
                 System.out.println(" ");
@@ -93,20 +97,20 @@ public class App {
                         break;
                     case 1: doublyLinkedList.add(menu.menu_student());
                             break;
-                    case 2: doublyLinkedList.insert(console.readInteger("Pleaser enter index for new object.",0, doublyLinkedList.size()),menu.menu_student());
+                    case 2: doublyLinkedList.insert(console.readInteger("Pleaser enter index for new object:",0, doublyLinkedList.size()),menu.menu_student());
                             break;
                     case 3: doublyLinkedList.addFirst(menu.menu_student());
                             break;
                     case 4: doublyLinkedList.addLast(menu.menu_student());
                             break;
-                    case 5: System.out.println(doublyLinkedList.get(console.readInteger("Please enter index of wanted Element", 0, doublyLinkedList.size())));
+                    case 5: System.out.println(doublyLinkedList.get(console.readInteger("Please enter index of wanted Element:", 0, doublyLinkedList.size())));
                             break;
                     case 6: doublyLinkedList.printAll();
                             break;
                     case 7:
                         System.out.println("Size of list: "+doublyLinkedList.size());
                             break;
-                    case 8: doublyLinkedList.remove(console.readInteger("Please enter index of Element to be removed.", 1, doublyLinkedList.size()));
+                    case 8: doublyLinkedList.remove(console.readInteger("Please enter index of Element to be removed:", 1, doublyLinkedList.size()));
                             break;
                     case 9: doublyLinkedList.clear();
                             if(doublyLinkedList.isEmpty()==true){
@@ -118,9 +122,11 @@ public class App {
                     case 10: Search search=new Search();
                             int option=menu.menu_search();
                             if(option<3){
-                                System.out.println(search.search_name(menu.menu_search_String(option),doublyLinkedList, option));
-                            }else{
-                                System.out.println(search.search_int(menu.menu_search_int(option),doublyLinkedList,option));
+                                search.search_name(menu.menu_search_String(option),doublyLinkedList, option);
+                            }else if(option==4){
+                                search.search_int(menu.menu_search_int(option),doublyLinkedList);
+                            }else {
+                                search.search_course(menu.menu_course(), doublyLinkedList);
                             }
                             break;
                     case 11: if(menu.menu_sort()==1) {
@@ -170,7 +176,7 @@ public class App {
             String a = "M";
             String b = "M";
             Random rd = new Random();
-            int c = rd.nextInt(1000);
+            Student.Course c= AI;
             int d = rd.nextInt(1000);
             Student student = new Student(a, b, c, d);
             list.add(student);

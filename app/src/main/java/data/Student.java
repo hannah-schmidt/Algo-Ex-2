@@ -3,15 +3,19 @@ package data;
 public class Student {
     private String prename;
     private String surname;
-    private int course;
-  //  private Course course;
+    private Course course;
     private int matriculationNumber;
 
- /*   public enum Course {
-       AngewandteInformatik, Wirtschaftsinformatik, Medieninformatik, Umweltinformatik
-    }*/
+    public enum Course {
+       AI,
+        WI,
+        MI,
+        UI,
+        BWL,
+        GD;
+    }
 
-    public Student(String prename, String surname, int course, int matriculationNumber) {
+    public Student(String prename, String surname, Course course, int matriculationNumber) {
         super();
         this.prename = prename;
         this.surname = surname;
@@ -35,11 +39,11 @@ public class Student {
         this.surname = surname;
     }
 
-    public int getCourse() {
+    public Course getCourse() {
         return course;
     }
 
-    public void setStudiengang(int course1) {
+    public void setStudiengang(Course course1) {
         this.course = course1;
     }
 
